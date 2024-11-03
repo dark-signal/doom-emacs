@@ -24,8 +24,8 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq doom-font (font-spec :family "Fira Code" :size 16)
-      doom-big-font (font-spec :family "Fira Code" :size 24)
+(setq doom-font (font-spec :family "Fira Code" :size 26)
+      doom-big-font (font-spec :family "Fira Code" :size 30)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 16))
 
 
