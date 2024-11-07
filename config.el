@@ -86,7 +86,7 @@
 ;; Search https://discourse.doomemacs.org/ for example configuration
 
 ;; Practicalli Logo on startup dashboard
-(setq fancy-splash-image "~/.config/doom/images/practicalli-logo-dark.svg")
+(setq fancy-splash-image "~/.config/doom/images/robot.svg")
 
 ;; Open Doom Emacs maximised
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -150,7 +150,3 @@
 ;; ---------------------------------------
 ;;
 ;; Tweaks to impove lsp perf
-(setq lsp-log-io nil)
-(setq lsp-idle-delay 0.500)
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
-(setq gc-cons-threshold 100000000)

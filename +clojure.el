@@ -51,11 +51,11 @@
 
 ;; Kaocha test runner from Emacs
 ;; - provides rich test reports
-(use-package! kaocha-runner
-  :after cider
-  :config
-  ;; enable Kaocha test runner
-  (setq clojure-enable-kaocha-runner t))
+;(use-package! kaocha-runner
+;  :after cider
+;  :config
+;  ;; enable Kaocha test runner
+;  (setq clojure-enable-kaocha-runner t))
 
 ;; End of Clojure
 ;; ---------------------------------------

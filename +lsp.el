@@ -16,7 +16,7 @@
         lsp-signature-render-documentation nil
         lsp-signature-function 'lsp-signature-posframe
         lsp-semantic-tokens-enable t
-        lsp-idle-delay 0.2 ;; Smoother LSP features response in cost of performance (Most servers I use have good performance)
+        lsp-idle-delay 0.5 ;; Smoother LSP features response in cost of performance (Most servers I use have good performance)
         lsp-use-plists nil)
   (add-hook 'lsp-after-apply-edits-hook (lambda (&rest _) (save-buffer)))
   (add-hook 'lsp-mode-hook (lambda () (setq-local company-format-margin-function #'company-vscode-dark-icons-margin))))
@@ -33,8 +33,12 @@
   (setq lsp-ui-doc-enable nil       ;; disable all doc popups
         lsp-ui-sideline-enable nil  ;; disable sideline bar for less distraction
         treemacs-space-between-root-nodes nil  ;; no spacing in treemacs views
-        lsp-log-io t  ; Log client-server json communication
-        lsp-ui-peek-enable t))
+        lsp-log-io nil  ; Log client-server json communication
+        lsp-ui-peek-enable t
+        ;; Not sure if this do any good? >D
+        read-process-output-max (* 1024 1024) ;; 1mb
+        gc-cons-threshold 100000000
+        ))
 
 ;; End of LSP
 ;; ---------------------------------------
