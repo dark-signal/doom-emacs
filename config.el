@@ -6,8 +6,8 @@
 
 ;; User Identify (optional)
 ;; e.g. GPG configuration, email clients, file templates and snippets
-(setq user-full-name "Practicalli John"
-      user-mail-address "john@practical.li")
+(setq user-full-name "Benny Skyttberg"
+      user-mail-address "benny.skyttberg@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -146,7 +146,11 @@
 ;; - keycast
 (load! "+package-config")
 
+(setq which-key-use-C-h-commands 't)
 ;; ---------------------------------------
 ;;
-;;
-(setq which-key-use-C-h-commands 't)
+;; Tweaks to impove lsp perf
+(setq lsp-log-io nil)
+(setq lsp-idle-delay 0.500)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq gc-cons-threshold 100000000)
