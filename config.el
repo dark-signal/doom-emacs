@@ -147,6 +147,7 @@
 (load! "+package-config")
 
 (setq which-key-use-C-h-commands 't)
+(setq doom-theme 'doom-badger)
 ;; ---------------------------------------
 ;;
 ;; Tweaks to impove lsp perf
