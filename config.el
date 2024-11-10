@@ -24,8 +24,8 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq doom-font (font-spec :family "Fira Code" :size 26)
-      doom-big-font (font-spec :family "Fira Code" :size 30)
+(setq doom-font (font-spec :family "Fira Code" :size 34)
+      doom-big-font (font-spec :family "Fira Code" :size 44)
       doom-variable-pitch-font (font-spec :family "Ubuntu" :size 16))
 
 
@@ -37,7 +37,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-                                        ;(setq doom-theme 'doom-gruvbox)
+
+(setq doom-theme 'doom-badger)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -147,6 +148,35 @@
 (load! "+package-config")
 
 (setq which-key-use-C-h-commands 't)
+
 ;; ---------------------------------------
+
+(defun db/lsp-treemacs-symbols-toggle ()
+  "Toggle the lsp-treemacs-symbols buffer."
+  (interactive)
+  (if (get-buffer "*LSP Symbols List*")
+      (kill-buffer "*LSP Symbols List*")
+    (lsp-treemacs-symbols)
+           ))         ;
+
+    ;(progn (lsp-treemacs-symbols)
+     ;      (other-window -1))))         ;
+(map! :leader
+      :prefix "c"      ;; The +code submenu under SPC c
+      :desc "Symbols" "S" #'db/lsp-treemacs-symbols-toggle)
+
+;;--------------------------------
 ;;
-;; Tweaks to impove lsp perf
+(defun consult-switch-buffer-kill ()
+    "Kill candidate buffer at point within the minibuffer completion."
+    (interactive)
+    ; The vertico--candidate has a irregular char at the end.
+    (let ((name  (substring (vertico--candidate) 0 -1)))
+      (when (bufferp (get-buffer name))
+        (kill-buffer name))))
+
+(define-key minibuffer-local-map (kbd "M-k") 'consult-switch-buffer-kill)
+
+;;--------------------------------
+;;
+(advice-add 'lsp-treemacs-symbols-goto-symbol :after #'db/lsp-treemacs-symbols-toggle)
